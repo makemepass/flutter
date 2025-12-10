@@ -1,0 +1,88 @@
+4a.db
+import 'package:flutter/material.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Screen1());
+  }
+}
+
+class Screen1 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: ElevatedButton(
+          child: Text("Next"),
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Screen2()),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class Screen2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: ElevatedButton(
+          child: Text("Back"),
+          onPressed: () => Navigator.pop(context),
+        ),
+      ),
+    );
+  }
+}
+4b
+import 'package:flutter/material.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      initialRoute: '/',
+      routes: {
+        '/': (context) => Screen1(),
+        '/second': (context) => Screen2(),
+      },
+    );
+  }
+}
+
+class Screen1 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: ElevatedButton(
+          child: Text("Go to Screen 2"),
+          onPressed: () => Navigator.pushNamed(context, '/second'),
+        ),
+      ),
+    );
+  }
+}
+
+class Screen2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: ElevatedButton(
+          child: Text("Back"),
+          onPressed: () => Navigator.pop(context),
+        ),
+      ),
+    );
+  }
+}
