@@ -1,0 +1,82 @@
+3a.db
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        body: LayoutBuilder(
+          builder: (context, c) {
+            double w = c.maxWidth;
+
+            if (w < 600) {
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("Mobile", style: TextStyle(fontSize: 22)),
+                  Container(width: 100, height: 100, color: Colors.blue),
+                ],
+              );
+            }         
+            else if (w < 1000) {
+              return Row(               
+                mainAxisAlignment: MainAxisAlignment.center,              
+                children: [
+                  Text("Tablet", style: TextStyle(fontSize: 22)),
+                  SizedBox(width:40),
+                  Container(width: 250, height: 150, color: Colors.green),
+                ],
+              );
+            } else {
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text("Desktop", style: TextStyle(fontSize: 22)),
+                  Container(width: 300, height: 200, color: Colors.orange),
+                  Container(width: 300, height: 200, color: Colors.red),
+                ],
+              );
+            }
+          },
+        ),
+      ),
+    );
+  }
+}
+
+
+
+3b
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MediaQueryDemo());
+}
+
+class MediaQueryDemo extends StatelessWidget {
+  const MediaQueryDemo({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        body: Builder(
+          builder: (context) {
+            double width = MediaQuery.of(context).size.width;
+            return Center(
+              child: Text(
+                width < 600 ? "Mobile View" : "Tablet/Desktop View",
+                style: const TextStyle(fontSize: 24),
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
