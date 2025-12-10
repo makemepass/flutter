@@ -1,0 +1,68 @@
+5a.db
+import 'package:flutter/material.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatefulWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        body: Center(child: Text("StatefulWidget in one class")),
+      ),
+    );
+  }
+}
+5a2
+import 'package:flutter/material.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        body: Center(child: Text("StatelessWidget in one class")),
+      ),
+    );
+  }
+}
+5b
+import 'package:flutter/material.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatefulWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  String value = "Test";
+
+  void clickMe() {
+    setState(() {
+      value = "Test done";
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text('Simple Flutter App')),
+        body: Center(child: Text(value)),
+        floatingActionButton: FloatingActionButton(
+          onPressed: clickMe,
+          child: Icon(Icons.add),
+        ),
+      ),
+    );
+  }
+}
