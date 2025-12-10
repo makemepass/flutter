@@ -1,0 +1,75 @@
+6a.db
+import 'package:flutter/material.dart';
+void main() {
+ runApp(MyApp());
+}
+class MyApp extends StatelessWidget {
+ const MyApp({super.key});
+ @override
+ Widget build(BuildContext context) {
+ return MaterialApp(
+ home: Scaffold(
+ appBar: AppBar(
+ title:Text("Custom widget"),
+ ),
+ body:Center(
+ child: Mybutton("clickme"),
+ ),
+ ),
+ );
+ }
+}
+class Mybutton extends StatelessWidget {
+ final String text;
+Mybutton(this.text);
+ @override
+ Widget build(BuildContext context) {
+ return ElevatedButton(
+ onPressed: () {
+ print("button pressed");
+ },
+ child: Text(text),
+ );
+ }
+}
+6b
+import 'package:flutter/material.dart';
+void main() {
+ runApp(const MyApp());
+}
+class MyApp extends StatelessWidget {
+ const MyApp({super.key});
+ @override
+ Widget build(BuildContext context) {
+ return MaterialApp(
+ theme: ThemeData(
+ primaryColor: Colors.white,
+ elevatedButtonTheme: ElevatedButtonThemeData(
+ style: ElevatedButton.styleFrom(
+ backgroundColor: Colors.black,
+ textStyle:TextStyle(fontSize: 20,color:Colors.white),
+ ),
+ ),
+ ),
+ home: Scaffold(
+ appBar: AppBar(title:Text("Custom Widget")),
+ body: Center(
+ child: Mybutton("Click Me"),
+ ),
+ ),
+ );
+ }
+}
+class Mybutton extends StatelessWidget {
+ final String text;
+ Mybutton(this.text);
+ @override
+ Widget build(BuildContext context) {
+ return ElevatedButton(
+ onPressed: () {
+ print("Button pressed");
+ },
+ child: Text(text),
+ );
+ }
+}
